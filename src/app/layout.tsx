@@ -1,5 +1,6 @@
 import React from 'react';
 import { Roboto } from 'next/font/google';
+import Header from '@/components/layout/Header/Header';
 import './globals.css';
 
 const roboto = Roboto({
@@ -12,9 +13,17 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const isLoggedIn = false;
+  const handleLogout = () => {
+    console.log('handleLogout');
+  };
+
   return (
     <html lang="en" className={roboto.className}>
-      <body>{children}</body>
+      <body>
+        <Header isLoggedIn={isLoggedIn} onLogout={handleLogout} />
+        {children}
+      </body>
     </html>
   );
 }
