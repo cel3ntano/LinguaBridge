@@ -14,7 +14,7 @@ const Header = ({ isLoggedIn, onLogout }: HeaderProps) => {
         <div className="flex-shrink-0">
           <Link
             href="/"
-            className="flex items-center text-text-primary font-roboto text-xl font-medium leading-6 tracking-[-0.4px] hover:text-accent-primary transition-colors"
+            className="flex items-center text-text-primary text-xl font-medium tracking-[-0.4px] hover:text-accent-primary transition-colors"
           >
             <Icon id="#logo" className="w-6 h-6" />
             <span className="ml-2">LearnLingo</span>
@@ -23,20 +23,20 @@ const Header = ({ isLoggedIn, onLogout }: HeaderProps) => {
         <nav className="flex items-center space-x-8">
           <Link
             href="/"
-            className="text-text-primary font-roboto text-base font-normal leading-5 hover:text-accent-primary transition-colors"
+            className="text-text-primary hover:text-accent-primary transition-colors"
           >
             Home
           </Link>
           <Link
             href="/teachers"
-            className="text-text-primary font-roboto text-base font-normal leading-5 hover:text-accent-primary transition-colors"
+            className="text-text-primary hover:text-accent-primary transition-colors"
           >
             Teachers
           </Link>
           {isLoggedIn && (
             <Link
               href="/favorites"
-              className="text-text-primary font-roboto text-base font-normal leading-5 hover:text-accent-primary transition-colors"
+              className="text-text-primary hover:text-accent-primary transition-colors"
             >
               Favorites
             </Link>
