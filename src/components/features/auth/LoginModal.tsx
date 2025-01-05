@@ -1,5 +1,6 @@
-'use client';
-
+import { useEffect } from 'react';
+import { useAppSelector } from '@/lib/hooks';
+import { selectIsAuthenticated } from '@/store/auth/authSelectors';
 import Modal from '@/components/common/Modal';
 import LoginForm from './LoginForm';
 
@@ -9,6 +10,14 @@ interface LoginModalProps {
 }
 
 const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
+  const isAuthenticated = useAppSelector(selectIsAuthenticated);
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      onClose();
+    }
+  }, [isAuthenticated, onClose]);
+
   return (
     <Modal
       isOpen={isOpen}

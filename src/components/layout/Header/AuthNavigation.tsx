@@ -1,24 +1,28 @@
-'use client';
+import { useAppDispatch, useAppSelector } from '@/lib/hooks';
+import { selectUser, selectIsAuthenticated } from '@/store/auth/authSelectors';
+import { signOut } from '@/store/auth/authOperations';
 import Button from '@/components/common/Button';
 import Icon from '@/components/common/Icon';
 
 interface AuthNavigationProps {
-  isLoggedIn: boolean;
   onLogin: () => void;
   onRegister: () => void;
-  onLogout: () => void;
 }
 
-const AuthNavigation = ({
-  isLoggedIn,
-  onLogin,
-  onRegister,
-  onLogout,
-}: AuthNavigationProps) => {
-  if (isLoggedIn) {
+const AuthNavigation = ({ onLogin, onRegister }: AuthNavigationProps) => {
+  const dispatch = useAppDispatch();
+  const user = useAppSelector(selectUser);
+  const isAuthenticated = useAppSelector(selectIsAuthenticated);
+
+  const handleLogout = () => {
+    dispatch(signOut());
+  };
+
+  if (isAuthenticated && user) {
     return (
       <div className="flex items-center space-x-4">
-        <Button variant="login" onClick={onLogout}>
+        <span className="text-text-primary text-lg">{user.name}</span>
+        <Button variant="logout" onClick={handleLogout}>
           Log out
         </Button>
       </div>

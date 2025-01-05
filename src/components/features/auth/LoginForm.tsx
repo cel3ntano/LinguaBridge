@@ -1,9 +1,11 @@
-'use client';
-
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import { useAppDispatch, useAppSelector } from '@/lib/hooks';
+import { loginUser } from '@/store/auth/authOperations';
+import { selectError, selectIsLoading } from '@/store/auth/authSelectors';
+import { clearError } from '@/store/auth/authSlice';
 import Button from '@/components/common/Button';
 import Icon from '@/components/common/Icon';
 
@@ -21,17 +23,36 @@ const schema = yup.object().shape({
 });
 
 const LoginForm = () => {
+  const dispatch = useAppDispatch();
+  const error = useAppSelector(selectError);
+  const isLoading = useAppSelector(selectIsLoading);
   const [showPassword, setShowPassword] = useState(false);
+
   const {
     register,
     handleSubmit,
     formState: { errors },
+    setError,
   } = useForm<LoginFormData>({
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = (data: LoginFormData) => {
-    console.log(data); // Will implement later
+  useEffect(() => {
+    dispatch(clearError());
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (error) {
+      setError('root', { message: error });
+    }
+  }, [error, setError]);
+
+  const onSubmit = async (data: LoginFormData) => {
+    try {
+      await dispatch(loginUser(data)).unwrap();
+    } catch (err) {
+      console.error('Login failed:', err);
+    }
   };
 
   const inputClasses =
@@ -46,6 +67,7 @@ const LoginForm = () => {
             type="email"
             placeholder="Email"
             className={inputClasses}
+            disabled={isLoading}
           />
           {errors.email && (
             <p className="absolute -bottom-5 left-1 text-sm text-red-500">
@@ -60,11 +82,13 @@ const LoginForm = () => {
             type={showPassword ? 'text' : 'password'}
             placeholder="Password"
             className={inputClasses}
+            disabled={isLoading}
           />
           <button
             type="button"
             onClick={() => setShowPassword(!showPassword)}
             className="absolute right-[18px] top-1/2 -translate-y-1/2"
+            disabled={isLoading}
           >
             <Icon
               id={showPassword ? '#eye_open' : '#eye_hidden'}
@@ -79,8 +103,19 @@ const LoginForm = () => {
         </div>
       </div>
 
-      <Button type="submit" size="large" className="mt-10 w-full">
-        Log In
+      {errors.root && (
+        <p className="mt-4 text-center text-sm text-red-500">
+          {errors.root.message}
+        </p>
+      )}
+
+      <Button
+        type="submit"
+        size="large"
+        className="mt-10 w-full"
+        disabled={isLoading}
+      >
+        {isLoading ? 'Logging in...' : 'Log In'}
       </Button>
     </form>
   );
