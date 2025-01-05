@@ -22,7 +22,7 @@ const Header = () => {
             className="flex items-center text-xl font-medium tracking-[-0.4px] text-text-primary transition-colors hover:text-accent-primary"
           >
             <Icon id="#logo" className="h-6 w-6" />
-            <span className="ml-2">LearnLingo</span>
+            <span className="ml-2">LinguaBridge</span>
           </Link>
         </div>
 
