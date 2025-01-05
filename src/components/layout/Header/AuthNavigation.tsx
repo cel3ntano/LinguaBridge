@@ -1,40 +1,40 @@
-import Link from 'next/link';
+'use client';
+import Button from '@/components/common/Button';
 import Icon from '@/components/common/Icon';
 
 interface AuthNavigationProps {
   isLoggedIn: boolean;
-  onLogout?: () => void;
+  onLogin: () => void;
+  onRegister: () => void;
+  onLogout: () => void;
 }
 
-const AuthNavigation = ({ isLoggedIn, onLogout }: AuthNavigationProps) => {
+const AuthNavigation = ({
+  isLoggedIn,
+  onLogin,
+  onRegister,
+  onLogout,
+}: AuthNavigationProps) => {
   if (isLoggedIn) {
     return (
       <div className="flex items-center space-x-4">
-        <button
-          onClick={onLogout}
-          className="text-text-primary hover:text-accent-primary transition-colors"
-        >
+        <Button variant="login" onClick={onLogout}>
           Log out
-        </button>
+        </Button>
       </div>
     );
   }
 
   return (
     <div className="flex items-center space-x-4">
-      <Link
-        href="/login"
-        className="flex items-center text-text-primary hover:text-accent-primary transition-colors"
-      >
+      <Button variant="login" onClick={onLogin} className="flex items-center">
         <Icon id="#login" className="w-5 h-5 stroke-accent-light fill-none" />
         <span className="ml-2">Log in</span>
-      </Link>
-      <Link
-        href="/registration"
-        className="px-10 py-3.5 rounded-xl leading-5 bg-text-primary text-background-primary font-bold hover:bg-accent-light transition-colors"
-      >
+      </Button>
+
+      <Button variant="registration" onClick={onRegister}>
         Registration
-      </Link>
+      </Button>
     </div>
   );
 };

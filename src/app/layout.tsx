@@ -13,15 +13,10 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const isLoggedIn = false;
-  const handleLogout = () => {
-    console.log('handleLogout');
-  };
-
   return (
     <html lang="en" className={roboto.className}>
       <body>
-        <Header isLoggedIn={isLoggedIn} onLogout={handleLogout} />
+        <Header />
         {children}
       </body>
     </html>
