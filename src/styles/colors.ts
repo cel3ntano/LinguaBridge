@@ -1,5 +1,5 @@
 export const colors = {
-  base: {
+  brand: {
     dark: '#121417', // Main text color
     gray: '#8A8A89', // Secondary text color
     white: '#FFF', // Main background
@@ -17,12 +17,12 @@ export const colors = {
     secondary: '#8A8A89', // Supporting text
   },
 
-  background: {
+  customBackground: {
     primary: '#FFF', // Main background color
     backdrop: '#F8F8F8', // Secondary backgrounds
   },
 
-  accent: {
+  customAccent: {
     primary: '#9FB7CE', // Main accent color
     light: '#BFD6EA', // Lighter accent color
   },
