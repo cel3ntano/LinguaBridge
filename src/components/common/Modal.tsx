@@ -4,6 +4,7 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
+  DialogDescription,
   DialogOverlay,
 } from '@/components/ui/dialog';
 import Button from './Button';
@@ -48,9 +49,9 @@ const Modal = ({
             {title}
           </DialogTitle>
           {description && (
-            <p className="mt-5 text-base text-text-primary/80 leading-[22px]">
+            <DialogDescription className="mt-5 text-base text-text-primary/80 leading-[22px]">
               {description}
-            </p>
+            </DialogDescription>
           )}
         </DialogHeader>
         {children}

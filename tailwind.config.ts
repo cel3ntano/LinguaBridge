@@ -17,6 +17,7 @@ export default {
           DEFAULT: 'hsl(var(--background))',
           primary: colors.customBackground.primary,
           backdrop: colors.customBackground.backdrop,
+          skeleton: colors.customBackground.skeleton,
         },
         foreground: 'hsl(var(--foreground))',
         primary: {

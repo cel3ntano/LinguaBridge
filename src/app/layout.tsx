@@ -1,12 +1,7 @@
-'use client';
-
-import { Providers } from '@/providers/Providers';
-import { useAppSelector } from '@/lib/hooks';
-import { selectIsInitialized } from '@/store/auth/authSelectors';
-import React from 'react';
+import { Metadata } from 'next';
 import { Roboto } from 'next/font/google';
-import Header from '@/components/layout/Header/Header';
-import LoadingScreen from '@/components/common/LoadingScreen';
+import { Providers } from '@/providers/Providers';
+import RootLayoutContent from '@/components/layout/RootLayoutContent';
 import './globals.css';
 
 const roboto = Roboto({
@@ -14,17 +9,10 @@ const roboto = Roboto({
   subsets: ['latin'],
 });
 
-const RootLayoutContent = ({ children }: { children: React.ReactNode }) => {
-  const isInitialized = useAppSelector(selectIsInitialized);
-
-  return isInitialized ? (
-    <>
-      <Header />
-      {children}
-    </>
-  ) : (
-    <LoadingScreen />
-  );
+export const metadata: Metadata = {
+  title: 'LinguaBridge - Find Your Perfect Language Teacher',
+  description:
+    'Connect with experienced language teachers for personalized learning',
 };
 
 export default function RootLayout({

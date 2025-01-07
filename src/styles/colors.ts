@@ -10,6 +10,8 @@ export const colors = {
     sunglow: '#FFC531', // Rating stars
     cultured: '#F8F8F8', // Backdrop
     limeGreen: '#38CD3E', // Price tag
+    banana: '#FBE9BA', // Avatar
+    brightGray: '#E5E7EB', // Skeleton loaders
   },
 
   text: {
@@ -20,6 +22,7 @@ export const colors = {
   customBackground: {
     primary: '#FFF', // Main background color
     backdrop: '#F8F8F8', // Secondary backgrounds
+    skeleton: '#E5E7EB', // Skeleton loaders
   },
 
   customAccent: {
@@ -32,5 +35,6 @@ export const colors = {
     buttonHover: '#FFDC86', // Button hover color
     rating: '#FFC531', // Star ratings
     price: '#38CD3E', // Price tag
+    avatar: '#FBE9BA', // Avatar
   },
 } as const;
