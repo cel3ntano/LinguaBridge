@@ -1,16 +1,24 @@
+'use client';
+import { useState } from 'react';
 import Image from 'next/image';
+import { motion, AnimatePresence } from 'framer-motion';
 import Icon from '@/components/common/Icon';
 import type { Teacher } from '@/types/teachers';
+import TeacherExperience from './TeacherExperience';
+import TeacherReviews from './TeacherReviews';
+import Button from '@/components/common/Button';
 
 interface TeacherCardProps {
   teacher: Teacher;
 }
 
 const TeacherCard = ({ teacher }: TeacherCardProps) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+
   return (
     <div className="rounded-3xl bg-brand-white p-6">
-      <div className="flex gap-12 ">
-        <div className="relative h-[120px] w-[120px] p-3 rounded-full border-[3px] border-interactive-avatar bg-brand-white ">
+      <div className="flex gap-12">
+        <div className="relative h-[120px] w-[120px] rounded-full border-[3px] border-interactive-avatar bg-brand-white p-3">
           <div className="relative">
             <Image
               src={teacher.avatar_url}
@@ -21,24 +29,19 @@ const TeacherCard = ({ teacher }: TeacherCardProps) => {
             />
             <Icon
               id="#online"
-              className="absolute right-1 top-1 h-4 w-4 fill-brand-limeGreen  border-[3px] border-brand-white rounded-full"
+              className="absolute right-1 top-1 h-4 w-4 fill-brand-limeGreen rounded-full border-[3px] border-brand-white"
             />
           </div>
         </div>
 
-        <div className="flex flex-1 flex-col gap-8">
-          <div className="space-y-8">
-            <div className="flex justify-between">
-              <div className="space-y-2">
-                <p className="text-text-secondary text-base font-medium leading-6">
-                  Languages
-                </p>
-                <h3 className="text-text-primary text-2xl font-medium leading-6">
-                  {teacher.name} {teacher.surname}
-                </h3>
-              </div>
+        <div className="flex-1">
+          <div className="flex justify-between">
+            <div className="flex flex-1 items-center">
+              <p className="text-text-secondary text-base font-medium leading-6">
+                Teacher information
+              </p>
 
-              <ul className="flex items-center">
+              <ul className="flex items-center ml-auto">
                 <li className="flex items-center">
                   <Icon
                     id="#book"
@@ -52,17 +55,17 @@ const TeacherCard = ({ teacher }: TeacherCardProps) => {
                 <li className="text-text-primary text-base font-medium leading-6">
                   Lessons done: {teacher.lessons_done}
                 </li>
-                <li className="mx-4 h-6 w-px bg-text-primary/20" />
+                <li className="mx-4 h-4 w-px bg-text-primary/20" />
                 <li className="flex items-center">
                   <Icon
                     id="#star"
                     className="h-5 w-5 fill-interactive-rating"
                   />
                   <span className="ml-2 text-text-primary text-base font-medium leading-6">
-                    Rating: {teacher.rating}
+                    Rating: {teacher.rating.toFixed(1)}
                   </span>
                 </li>
-                <li className="mx-4 h-6 w-px bg-text-primary/20" />
+                <li className="mx-4 h-4 w-px bg-text-primary/20" />
                 <li className="text-text-primary text-base font-medium leading-6">
                   Price / 1 hour:{' '}
                   <span className="text-interactive-price">
@@ -70,51 +73,78 @@ const TeacherCard = ({ teacher }: TeacherCardProps) => {
                   </span>
                 </li>
               </ul>
-
-              <button className="ml-16" type="button">
-                <Icon
-                  id="#heart"
-                  className="h-[26px] w-[26px] stroke-text-primary fill-none"
-                />
-              </button>
             </div>
 
-            <div className="space-y-2">
-              <p className="text-base leading-6">
-                <span className="text-text-secondary font-medium">
-                  Speaks:{' '}
-                </span>
-                <span className="text-text-primary font-medium underline">
-                  {teacher.languages.join(', ')}
-                </span>
-              </p>
-              <p className="text-base leading-6">
-                <span className="text-text-secondary font-medium">
-                  Lesson Info:{' '}
-                </span>
-                <span className="text-text-primary font-medium">
-                  {teacher.lesson_info}
-                </span>
-              </p>
-              <p className="text-base leading-6">
-                <span className="text-text-secondary font-medium">
-                  Conditions:{' '}
-                </span>
-                <span className="text-text-primary font-medium">
-                  {teacher.conditions.join(' ')}
-                </span>
-              </p>
-            </div>
-
-            <button
-              type="button"
-              className="text-text-primary text-base font-medium leading-6 underline"
-            >
-              Read more
-            </button>
+            <Button variant="icon" size="icon" className="ml-16">
+              <Icon
+                id="#heart"
+                className="h-[26px] w-[26px] stroke-text-primary fill-none"
+              />
+            </Button>
           </div>
 
-          <ul className="flex flex-wrap gap-2">
+          <h3 className="mt-2 text-text-primary text-2xl font-medium leading-6">
+            {teacher.name} {teacher.surname}
+          </h3>
+
+          <div className="mt-8">
+            <p className="text-base leading-6">
+              <span className="text-text-secondary font-medium">Speaks: </span>
+              <span className="text-text-primary font-medium underline">
+                {teacher.languages.join(', ')}
+              </span>
+            </p>
+            <p className="mt-2 text-base leading-6">
+              <span className="text-text-secondary font-medium">
+                Lesson Info:{' '}
+              </span>
+              <span className="text-text-primary font-medium">
+                {teacher.lesson_info}
+              </span>
+            </p>
+            <p className="mt-2 text-base leading-6">
+              <span className="text-text-secondary font-medium">
+                Conditions:{' '}
+              </span>
+              <span className="text-text-primary font-medium">
+                {teacher.conditions.join(' ')}
+              </span>
+            </p>
+          </div>
+
+          <AnimatePresence>
+            {isExpanded && (
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: 'auto', opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.2 }}
+                className="overflow-hidden"
+              >
+                <div className="mt-4">
+                  <TeacherExperience experience={teacher.experience} />
+                  <TeacherReviews reviews={teacher.reviews} />
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          <button
+            className="mt-4 flex items-center text-text-primary text-base font-medium leading-6 hover:text-accent-primary transition-colors"
+            onClick={() => setIsExpanded(!isExpanded)}
+          >
+            <span className="underline mr-2">
+              {isExpanded ? 'Show less' : 'Read more'}
+            </span>
+            <motion.div
+              animate={{ rotate: isExpanded ? 180 : 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              <Icon id="#arrow" className="h-4 w-4 stroke-current" />
+            </motion.div>
+          </button>
+
+          <ul className="mt-8 flex flex-wrap gap-2">
             {teacher.levels.map((level) => (
               <li
                 key={level}
@@ -126,6 +156,22 @@ const TeacherCard = ({ teacher }: TeacherCardProps) => {
               </li>
             ))}
           </ul>
+
+          <AnimatePresence>
+            {isExpanded && (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 20 }}
+                transition={{ duration: 0.1 }}
+                className="mt-8"
+              >
+                <Button className="w-fit px-12" size="large">
+                  Book trial lesson
+                </Button>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </div>
     </div>
