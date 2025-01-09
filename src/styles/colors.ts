@@ -12,11 +12,13 @@ export const colors = {
     limeGreen: '#38CD3E', // Price tag
     banana: '#FBE9BA', // Avatar
     brightGray: '#E5E7EB', // Skeleton loaders
+    carminePink: '#EF4444', // Error messages
   },
 
   text: {
     primary: '#121417', // Main content text
     secondary: '#8A8A89', // Supporting text
+    error: '#EF4444', // Error messages
   },
 
   customBackground: {

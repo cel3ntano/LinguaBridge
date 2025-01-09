@@ -7,6 +7,7 @@ import type { Teacher } from '@/types/teachers';
 import TeacherExperience from './TeacherExperience';
 import TeacherReviews from './TeacherReviews';
 import Button from '@/components/common/Button';
+import BookTrialLessonModal from './booking/BookTrialLessonModal';
 
 interface TeacherCardProps {
   teacher: Teacher;
@@ -14,6 +15,7 @@ interface TeacherCardProps {
 
 const TeacherCard = ({ teacher }: TeacherCardProps) => {
   const [isExpanded, setIsExpanded] = useState(false);
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
 
   return (
     <div className="rounded-3xl bg-brand-white p-6">
@@ -133,7 +135,7 @@ const TeacherCard = ({ teacher }: TeacherCardProps) => {
             className="mt-4 flex items-center text-text-primary text-base font-medium leading-6 hover:text-accent-primary transition-colors"
             onClick={() => setIsExpanded(!isExpanded)}
           >
-            <span className="underline mr-2">
+            <span className="underline mr-1">
               {isExpanded ? 'Show less' : 'Read more'}
             </span>
             <motion.div
@@ -166,7 +168,11 @@ const TeacherCard = ({ teacher }: TeacherCardProps) => {
                 transition={{ duration: 0.1 }}
                 className="mt-8"
               >
-                <Button className="w-fit px-12" size="large">
+                <Button
+                  className="w-fit px-12"
+                  size="large"
+                  onClick={() => setIsBookingModalOpen(true)}
+                >
                   Book trial lesson
                 </Button>
               </motion.div>
@@ -174,6 +180,12 @@ const TeacherCard = ({ teacher }: TeacherCardProps) => {
           </AnimatePresence>
         </div>
       </div>
+
+      <BookTrialLessonModal
+        isOpen={isBookingModalOpen}
+        onClose={() => setIsBookingModalOpen(false)}
+        teacher={teacher}
+      />
     </div>
   );
 };

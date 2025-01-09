@@ -70,7 +70,7 @@ const LoginForm = () => {
             disabled={isLoading}
           />
           {errors.email && (
-            <p className="absolute -bottom-5 left-1 text-sm text-red-500">
+            <p className="absolute -bottom-5 left-1 text-sm text-text-error">
               {errors.email.message}
             </p>
           )}
@@ -96,7 +96,7 @@ const LoginForm = () => {
             />
           </button>
           {errors.password && (
-            <p className="absolute -bottom-5 left-1 text-sm text-red-500">
+            <p className="absolute -bottom-5 left-1 text-sm text-text-error">
               {errors.password.message}
             </p>
           )}
@@ -104,7 +104,7 @@ const LoginForm = () => {
       </div>
 
       {errors.root && (
-        <p className="mt-4 text-center text-sm text-red-500">
+        <p className="mt-4 text-center text-sm text-text-error">
           {errors.root.message}
         </p>
       )}

@@ -29,32 +29,36 @@ const Modal = ({
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogOverlay className="animate-overlay bg-brand-dark/10 backdrop-blur-[2px]" />
-      <DialogContent className="animate-modal max-w-[566px] rounded-[30px] p-16 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%]">
-        <DialogHeader>
-          <DialogClose asChild>
-            <Button
-              variant="icon"
-              size="icon"
-              className="absolute right-5 top-5 transition-transform hover:scale-110"
-              onClick={onClose}
-              aria-label="Close"
-            >
-              <Icon
-                id="#close"
-                className="h-8 w-8 stroke-brand-dark fill-none"
-              />
-            </Button>
-          </DialogClose>
-          <DialogTitle className="text-4xl font-medium leading-[48px] tracking-[-0.8px]">
-            {title}
-          </DialogTitle>
-          {description && (
-            <DialogDescription className="mt-5 text-base text-text-primary/80 leading-[22px]">
-              {description}
-            </DialogDescription>
-          )}
-        </DialogHeader>
-        {children}
+      <DialogContent className="animate-modal max-h-[90vh] max-w-[566px] rounded-[30px] overflow-hidden flex flex-col">
+        <div className="px-16 pt-16">
+          <DialogHeader className="flex-shrink-0">
+            <DialogClose asChild>
+              <Button
+                variant="icon"
+                size="icon"
+                className="absolute right-5 top-5 transition-transform hover:scale-110"
+                onClick={onClose}
+                aria-label="Close"
+              >
+                <Icon
+                  id="#close"
+                  className="h-8 w-8 stroke-brand-dark fill-none"
+                />
+              </Button>
+            </DialogClose>
+            <DialogTitle className="text-4xl font-medium leading-[48px] tracking-[-0.8px]">
+              {title}
+            </DialogTitle>
+            {description && (
+              <DialogDescription className="mt-5 pb-1 text-base text-text-primary/80 leading-[22px]">
+                {description}
+              </DialogDescription>
+            )}
+          </DialogHeader>
+        </div>
+        <div className="flex-1 overflow-y-auto scrollbar-thin scrollbar-track-background-backdrop scrollbar-thumb-accent-primary/30 hover:scrollbar-thumb-accent-primary/70">
+          <div className="px-16 pb-16">{children}</div>
+        </div>
       </DialogContent>
     </Dialog>
   );
