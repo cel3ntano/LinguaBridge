@@ -1,11 +1,10 @@
 'use client';
-
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import Button from '@/components/common/Button';
 import Icon from '@/components/common/Icon';
-
+import type { BookTrialLessonFormData } from '@/types/booking';
 const reasonOptions = [
   'Career and business',
   'Lesson for kids',
@@ -13,13 +12,6 @@ const reasonOptions = [
   'Exams and coursework',
   'Culture, travel or hobby',
 ];
-
-interface BookTrialLessonFormData {
-  reason: string;
-  fullName: string;
-  email: string;
-  phone: string;
-}
 
 const schema = yup.object().shape({
   reason: yup.string().required('Please select a reason'),
@@ -31,7 +23,11 @@ const schema = yup.object().shape({
     .required('Phone number is required'),
 });
 
-const BookTrialLessonForm = ({ onClose }: { onClose: () => void }) => {
+interface BookTrialLessonFormProps {
+  onSubmit: (data: BookTrialLessonFormData) => void;
+}
+
+const BookTrialLessonForm = ({ onSubmit }: BookTrialLessonFormProps) => {
   const {
     register,
     handleSubmit,
@@ -40,11 +36,6 @@ const BookTrialLessonForm = ({ onClose }: { onClose: () => void }) => {
     resolver: yupResolver(schema),
     mode: 'onChange',
   });
-
-  const onSubmit = (data: BookTrialLessonFormData) => {
-    console.log(data);
-    onClose();
-  };
 
   const inputClasses =
     'w-full rounded-xl border border-text-primary/10 px-[18px] py-4 text-base leading-[22px] placeholder:text-text-primary focus:outline-none focus:ring-1 transition-colors duration-300 hover:border-accent-primary';
@@ -85,7 +76,7 @@ const BookTrialLessonForm = ({ onClose }: { onClose: () => void }) => {
           ))}
         </div>
         {errors.reason && (
-          <p className="absolute -bottom-6 left-0 text-sm text-text-error">
+          <p className="absolute -bottom-6 left-0 text-sm text-red-500">
             {errors.reason.message}
           </p>
         )}
@@ -99,7 +90,7 @@ const BookTrialLessonForm = ({ onClose }: { onClose: () => void }) => {
             className={inputClasses}
           />
           {errors.fullName && (
-            <p className="absolute -bottom-5 left-1 text-sm text-text-error">
+            <p className="absolute -bottom-5 left-1 text-sm text-red-500">
               {errors.fullName.message}
             </p>
           )}
@@ -113,7 +104,7 @@ const BookTrialLessonForm = ({ onClose }: { onClose: () => void }) => {
             className={inputClasses}
           />
           {errors.email && (
-            <p className="absolute -bottom-5 left-1 text-sm text-text-error">
+            <p className="absolute -bottom-5 left-1 text-sm text-red-500">
               {errors.email.message}
             </p>
           )}
@@ -127,7 +118,7 @@ const BookTrialLessonForm = ({ onClose }: { onClose: () => void }) => {
             className={inputClasses}
           />
           {errors.phone && (
-            <p className="absolute -bottom-5 left-1 text-sm text-text-error">
+            <p className="absolute -bottom-5 left-1 text-sm text-red-500">
               {errors.phone.message}
             </p>
           )}
