@@ -2,20 +2,37 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useAppSelector } from '@/lib/hooks';
+import { selectIsAuthenticated } from '@/store/auth/authSelectors';
 import Icon from '@/components/common/Icon';
 import type { Teacher } from '@/types/teachers';
 import TeacherExperience from './TeacherExperience';
 import TeacherReviews from './TeacherReviews';
 import Button from '@/components/common/Button';
 import BookTrialLessonModal from './booking/BookTrialLessonModal';
+import UnauthorizedFavoritesModal from '../auth/UnauthorizedFavoritesModal';
+import RegistrationModal from '../auth/RegistrationModal';
+import LoginModal from '../auth/LoginModal';
 
 interface TeacherCardProps {
   teacher: Teacher;
 }
 
 const TeacherCard = ({ teacher }: TeacherCardProps) => {
+  const isAuthenticated = useAppSelector(selectIsAuthenticated);
   const [isExpanded, setIsExpanded] = useState(false);
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
+  const [isUnauthorizedModalOpen, setIsUnauthorizedModalOpen] = useState(false);
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const [isRegistrationModalOpen, setIsRegistrationModalOpen] = useState(false);
+
+  const handleFavoriteClick = () => {
+    if (!isAuthenticated) {
+      setIsUnauthorizedModalOpen(true);
+    } else {
+      console.log('Logged in user favorite click');
+    }
+  };
 
   return (
     <div className="rounded-3xl bg-brand-white p-6">
@@ -77,7 +94,12 @@ const TeacherCard = ({ teacher }: TeacherCardProps) => {
               </ul>
             </div>
 
-            <Button variant="icon" size="icon" className="ml-16">
+            <Button
+              variant="icon"
+              size="icon"
+              className="ml-16"
+              onClick={handleFavoriteClick}
+            >
               <Icon
                 id="#heart"
                 className="h-[26px] w-[26px] stroke-text-primary fill-none"
@@ -185,6 +207,23 @@ const TeacherCard = ({ teacher }: TeacherCardProps) => {
         isOpen={isBookingModalOpen}
         onClose={() => setIsBookingModalOpen(false)}
         teacher={teacher}
+      />
+
+      <UnauthorizedFavoritesModal
+        isOpen={isUnauthorizedModalOpen}
+        onClose={() => setIsUnauthorizedModalOpen(false)}
+        onLogin={() => setIsLoginModalOpen(true)}
+        onRegister={() => setIsRegistrationModalOpen(true)}
+      />
+
+      <LoginModal
+        isOpen={isLoginModalOpen}
+        onClose={() => setIsLoginModalOpen(false)}
+      />
+
+      <RegistrationModal
+        isOpen={isRegistrationModalOpen}
+        onClose={() => setIsRegistrationModalOpen(false)}
       />
     </div>
   );

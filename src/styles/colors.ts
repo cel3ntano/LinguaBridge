@@ -13,6 +13,7 @@ export const colors = {
     banana: '#FBE9BA', // Avatar
     brightGray: '#E5E7EB', // Skeleton loaders
     carminePink: '#EF4444', // Error messages
+    lust: '#E01F1F', // Favorite icon
   },
 
   text: {
@@ -38,5 +39,6 @@ export const colors = {
     rating: '#FFC531', // Star ratings
     price: '#38CD3E', // Price tag
     avatar: '#FBE9BA', // Avatar
+    favorite: '#E01F1F', // Favorite icon
   },
 } as const;
