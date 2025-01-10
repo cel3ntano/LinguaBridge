@@ -1,34 +1,78 @@
 'use client';
-
-import { useAppSelector } from '@/lib/hooks';
-import { selectIsAuthenticated } from '@/store/auth/authSelectors';
-import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
-import LoadingScreen from '@/components/common/LoadingScreen';
+import { redirect } from 'next/navigation';
+import { useAppDispatch, useAppSelector } from '@/lib/hooks';
+import { selectIsAuthenticated } from '@/store/auth/authSelectors';
+import { selectFavorites } from '@/store/favorites/favoritesSelectors';
+import { fetchTeachers } from '@/store/teachers/teachersOperations';
+import TeacherCard from '@/components/features/teachers/TeacherCard';
+import TeacherCardSkeleton from '@/components/features/teachers/TeacherCardSkeleton';
+import TeacherFilters from '@/components/features/teachers/TeacherFilters';
+import {
+  selectTeachers,
+  selectIsLoading,
+} from '@/store/teachers/teachersSelectors';
 
-export default function FavoritesPage() {
+const FavoritesPage = () => {
+  const dispatch = useAppDispatch();
   const isAuthenticated = useAppSelector(selectIsAuthenticated);
-  const router = useRouter();
+  const allTeachers = useAppSelector(selectTeachers);
+  const loading = useAppSelector(selectIsLoading);
+  const favorites = useAppSelector(selectFavorites);
 
   useEffect(() => {
     if (!isAuthenticated) {
-      router.push('/');
+      redirect('/');
     }
-  }, [isAuthenticated, router]);
+  }, [isAuthenticated]);
 
-  if (!isAuthenticated) {
-    return <LoadingScreen />;
+  useEffect(() => {
+    if (allTeachers.length === 0) {
+      dispatch(fetchTeachers());
+    }
+  }, [dispatch, allTeachers.length]);
+
+  const favoriteTeachers = allTeachers.filter((teacher) =>
+    favorites.includes(teacher.id),
+  );
+
+  if (loading && favoriteTeachers.length === 0) {
+    return (
+      <main className="bg-background-backdrop px-32 py-24">
+        <div className="mx-auto max-w-[1440px]">
+          <TeacherFilters />
+          <div className="space-y-8">
+            <TeacherCardSkeleton />
+          </div>
+        </div>
+      </main>
+    );
   }
 
   return (
-    <main className="mx-auto max-w-[1440px] mt-5 px-16 pb-8">
-      <h1 className="text-4xl font-medium mb-8">Favorite Teachers</h1>
-      {/* Favorites content will be implemented later */}
-      <div className="min-h-[400px] flex items-center justify-center">
-        <p className="text-lg text-text-secondary">
-          Your favorites list is currently empty.
-        </p>
+    <main className="bg-background-backdrop px-32 py-24">
+      <div className="mx-auto max-w-[1440px]">
+        <TeacherFilters />
+        <div className="space-y-8">
+          {favoriteTeachers.length > 0 ? (
+            favoriteTeachers.map((teacher, index) => (
+              <TeacherCard key={`${teacher.name}-${index}`} teacher={teacher} />
+            ))
+          ) : (
+            <div className="text-center py-8">
+              <h2 className="text-2xl font-medium text-text-primary mb-4">
+                No favorite teachers yet
+              </h2>
+              <p className="text-text-secondary">
+                Visit the Teachers page to find and add teachers to your
+                favorites
+              </p>
+            </div>
+          )}
+        </div>
       </div>
     </main>
   );
-}
+};
+
+export default FavoritesPage;

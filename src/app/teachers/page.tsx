@@ -13,6 +13,7 @@ import {
 } from '@/store/teachers/teachersSelectors';
 
 const ITEMS_PER_PAGE = 4;
+const STORAGE_KEY = 'teachersLoadedPages';
 
 const TeachersPage = () => {
   const dispatch = useAppDispatch();
@@ -23,12 +24,23 @@ const TeachersPage = () => {
   const [isLoadingMore, setIsLoadingMore] = useState(false);
 
   useEffect(() => {
-    dispatch(fetchTeachers());
-  }, [dispatch]);
+    const loadStoredPages = async () => {
+      const storedPages = Number(localStorage.getItem(STORAGE_KEY)) || 1;
+      for (let i = 0; i < storedPages; i++) {
+        await dispatch(fetchTeachers());
+      }
+    };
+
+    if (teachers.length === 0) {
+      loadStoredPages();
+    }
+  }, [dispatch, teachers.length]);
 
   const handleLoadMore = async () => {
     if (isLoadingMore) return;
     setIsLoadingMore(true);
+    const currentPages = Number(localStorage.getItem(STORAGE_KEY)) || 1;
+    localStorage.setItem(STORAGE_KEY, String(currentPages + 1));
     await dispatch(fetchTeachers());
     requestAnimationFrame(() => {
       if (listRef.current) {
