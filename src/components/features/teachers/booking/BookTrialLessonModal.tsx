@@ -5,7 +5,7 @@ import Modal from '@/components/common/Modal';
 import BookTrialLessonForm from './BookTrialLessonForm';
 import ConfirmationModal from './ConfirmationModal';
 import type { Teacher } from '@/types/teachers';
-import type { BookTrialLessonFormData } from '@/types/booking';
+// import type { BookTrialLessonFormData } from '@/types/booking';
 
 interface BookTrialLessonModalProps {
   isOpen: boolean;
@@ -20,7 +20,7 @@ const BookTrialLessonModal = ({
 }: BookTrialLessonModalProps) => {
   const [showConfirmation, setShowConfirmation] = useState(false);
 
-  const handleFormSubmit = (formData: BookTrialLessonFormData) => {
+  const handleFormSubmit = () => {
     // console.log('Form submitted:', formData);
     setShowConfirmation(true);
   };

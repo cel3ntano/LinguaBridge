@@ -10,6 +10,7 @@ import { FirebaseError } from 'firebase/app';
 import { auth, database } from '@/lib/firebase';
 import type { User } from '@/types/auth';
 import { formatFirebaseError } from '@/lib/firebase/errors';
+import { clearFavorites } from '../favorites/favoritesSlice';
 
 export const registerUser = createAsyncThunk(
   'auth/register',
@@ -99,9 +100,10 @@ export const loginUser = createAsyncThunk(
 
 export const signOut = createAsyncThunk(
   'auth/signOut',
-  async (_, { rejectWithValue }) => {
+  async (_, { dispatch, rejectWithValue }) => {
     try {
       await firebaseSignOut(auth);
+      dispatch(clearFavorites());
       return null;
     } catch (error) {
       if (error instanceof FirebaseError) {

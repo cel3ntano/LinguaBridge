@@ -34,7 +34,10 @@ const fetchInitialTeachers = async () => {
   let newLastKey: string | null = null;
 
   snapshot.forEach((childSnapshot) => {
-    teachers.push(childSnapshot.val());
+    teachers.push({
+      id: childSnapshot.key,
+      ...childSnapshot.val(),
+    });
     newLastKey = childSnapshot.key;
   });
 
@@ -58,7 +61,10 @@ const fetchMoreTeachers = async (lastKey: string) => {
 
   snapshot.forEach((childSnapshot) => {
     if (!isFirst) {
-      teachers.push(childSnapshot.val());
+      teachers.push({
+        id: childSnapshot.key,
+        ...childSnapshot.val(),
+      });
       newLastKey = childSnapshot.key;
     }
     isFirst = false;

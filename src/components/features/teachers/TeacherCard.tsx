@@ -1,11 +1,12 @@
 'use client';
 import { useState } from 'react';
-import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useAppSelector } from '@/lib/hooks';
+import { useAppDispatch, useAppSelector } from '@/lib/hooks';
 import { selectIsAuthenticated } from '@/store/auth/authSelectors';
-import Icon from '@/components/common/Icon';
+import { selectIsFavorite } from '@/store/favorites/favoritesSelectors';
+import { toggleFavoriteTeacher } from '@/store/favorites/favoritesOperations';
 import type { Teacher } from '@/types/teachers';
+import Icon from '@/components/common/Icon';
 import TeacherExperience from './TeacherExperience';
 import TeacherReviews from './TeacherReviews';
 import Button from '@/components/common/Button';
@@ -13,6 +14,7 @@ import BookTrialLessonModal from './booking/BookTrialLessonModal';
 import UnauthorizedFavoritesModal from '../auth/UnauthorizedFavoritesModal';
 import RegistrationModal from '../auth/RegistrationModal';
 import LoginModal from '../auth/LoginModal';
+import Image from 'next/image';
 
 interface TeacherCardProps {
   teacher: Teacher;
@@ -25,12 +27,18 @@ const TeacherCard = ({ teacher }: TeacherCardProps) => {
   const [isUnauthorizedModalOpen, setIsUnauthorizedModalOpen] = useState(false);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [isRegistrationModalOpen, setIsRegistrationModalOpen] = useState(false);
+  const dispatch = useAppDispatch();
+  const isFavorite = useAppSelector(selectIsFavorite(teacher.id));
 
-  const handleFavoriteClick = () => {
+  const handleFavoriteClick = async () => {
     if (!isAuthenticated) {
       setIsUnauthorizedModalOpen(true);
     } else {
-      console.log('Logged in user favorite click');
+      try {
+        await dispatch(toggleFavoriteTeacher(teacher.id)).unwrap();
+      } catch (error) {
+        console.error('Failed to update favorites:', error);
+      }
     }
   };
 
@@ -102,7 +110,11 @@ const TeacherCard = ({ teacher }: TeacherCardProps) => {
             >
               <Icon
                 id="#heart"
-                className="h-[26px] w-[26px] stroke-text-primary fill-none"
+                className={`h-[26px] w-[26px] ${
+                  isFavorite
+                    ? ' stroke-interactive-favorite fill-none transition-colors'
+                    : 'stroke-text-primary fill-none '
+                }`}
               />
             </Button>
           </div>
