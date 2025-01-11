@@ -1,10 +1,10 @@
-import { createSlice, isAnyOf } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import { fetchTeachers } from './teachersOperations';
 import type { TeachersState } from '@/types/teachers';
 
 const initialState: TeachersState = {
   items: [],
-  lastKey: null,
+  lastDocId: null,
   loading: false,
   error: null,
   hasMore: true,
@@ -16,29 +16,28 @@ const teachersSlice = createSlice({
   reducers: {
     clearTeachers: (state) => {
       state.items = [];
-      state.lastKey = null;
+      state.lastDocId = null;
       state.hasMore = true;
     },
   },
   extraReducers: (builder) => {
     builder
       .addCase(fetchTeachers.fulfilled, (state, action) => {
-        state.items =
-          state.items.length === 0
-            ? action.payload.teachers
-            : [...state.items, ...action.payload.teachers];
-        state.lastKey = action.payload.lastKey;
+        if (state.items.length === 0) {
+          state.items = action.payload.teachers;
+        } else {
+          state.items = [...state.items, ...action.payload.teachers];
+        }
+        state.lastDocId = action.payload.lastDocId;
         state.hasMore = action.payload.hasMore;
-      })
-      .addMatcher(isAnyOf(fetchTeachers.pending), (state) => {
-        state.loading = true;
-        state.error = null;
-      })
-      .addMatcher(isAnyOf(fetchTeachers.fulfilled), (state) => {
         state.loading = false;
         state.error = null;
       })
-      .addMatcher(isAnyOf(fetchTeachers.rejected), (state, action) => {
+      .addCase(fetchTeachers.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(fetchTeachers.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message || 'Failed to fetch teachers';
       });

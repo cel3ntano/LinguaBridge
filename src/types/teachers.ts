@@ -1,3 +1,11 @@
+export interface TeachersState {
+  items: Teacher[];
+  lastDocId: string | null;
+  loading: boolean;
+  error: string | null;
+  hasMore: boolean;
+}
+
 export interface Teacher {
   id: string;
   name: string;
@@ -16,12 +24,4 @@ export interface Teacher {
   lesson_info: string;
   conditions: string[];
   experience: string;
-}
-
-export interface TeachersState {
-  items: Teacher[];
-  lastKey: string | null;
-  loading: boolean;
-  error: string | null;
-  hasMore: boolean;
 }

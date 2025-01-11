@@ -1,8 +1,16 @@
 import { ReactNode, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { onAuthStateChanged } from 'firebase/auth';
-import { ref, get, set } from 'firebase/database';
-import { auth, database } from '@/lib/firebase';
+import {
+  doc,
+  getDoc,
+  collection,
+  getDocs,
+  query,
+  where,
+  setDoc,
+} from 'firebase/firestore';
+import { auth, db } from '@/lib/firebase';
 import { setUser } from '@/store/auth/authSlice';
 import { clearFavorites, setFavorites } from '@/store/favorites/favoritesSlice';
 import type { User } from '@/types/auth';
@@ -19,53 +27,70 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
       if (firebaseUser) {
         try {
-          const userRef = ref(database, `users/${firebaseUser.uid}`);
-          const userSnapshot = await get(userRef);
-          const userData = userSnapshot.val();
+          const userRef = doc(db, 'users', firebaseUser.uid);
+          const userDoc = await getDoc(userRef);
+          const userData = userDoc.data();
 
-          const favorites = userData?.favorites || [];
-          const validFavorites: string[] = [];
+          if (userData) {
+            const favorites = userData.favorites || [];
+            const validFavorites: string[] = [];
 
-          await Promise.all(
-            favorites.map(async (teacherId: string) => {
-              const teacherRef = ref(database, `teachers/${teacherId}`);
-              const teacherSnapshot = await get(teacherRef);
-              if (teacherSnapshot.exists()) {
-                validFavorites.push(teacherId);
+            if (favorites.length > 0) {
+              const teachersRef = collection(db, 'teachers');
+              const teacherQuery = query(
+                teachersRef,
+                where('id', 'in', favorites),
+              );
+
+              const teacherDocs = await getDocs(teacherQuery);
+              teacherDocs.forEach((doc) => {
+                if (doc.exists()) {
+                  validFavorites.push(doc.id);
+                }
+              });
+
+              if (validFavorites.length !== favorites.length) {
+                await setDoc(
+                  userRef,
+                  {
+                    ...userData,
+                    favorites: validFavorites,
+                  },
+                  { merge: true },
+                );
               }
-            }),
-          );
+            }
 
-          const validatedUserData: User = {
-            id: firebaseUser.uid,
-            name: userData?.name || firebaseUser.displayName || '',
-            email: userData?.email || firebaseUser.email || '',
-            favorites: validFavorites,
-          };
+            const validatedUserData: User = {
+              id: firebaseUser.uid,
+              name: userData.name || firebaseUser.displayName || '',
+              email: userData.email || firebaseUser.email || '',
+              favorites: validFavorites,
+            };
 
-          dispatch(setUser(validatedUserData));
-          dispatch(setFavorites(validFavorites));
-
-          if (
-            JSON.stringify(validFavorites) !==
-            JSON.stringify(userData?.favorites)
-          ) {
-            const userFavoritesRef = ref(
-              database,
-              `users/${firebaseUser.uid}/favorites`,
-            );
-            await set(userFavoritesRef, validFavorites);
-          }
-        } catch (error) {
-          console.error('Error initializing user data:', error);
-          dispatch(
-            setUser({
+            dispatch(setUser(validatedUserData));
+            dispatch(setFavorites(validFavorites));
+          } else {
+            const newUserData: User = {
               id: firebaseUser.uid,
               name: firebaseUser.displayName || '',
               email: firebaseUser.email || '',
               favorites: [],
-            }),
-          );
+            };
+
+            await setDoc(userRef, newUserData);
+            dispatch(setUser(newUserData));
+            dispatch(setFavorites([]));
+          }
+        } catch (error) {
+          console.error('Error initializing user data:', error);
+          const fallbackUserData: User = {
+            id: firebaseUser.uid,
+            name: firebaseUser.displayName || '',
+            email: firebaseUser.email || '',
+            favorites: [],
+          };
+          dispatch(setUser(fallbackUserData));
           dispatch(setFavorites([]));
         }
       } else {

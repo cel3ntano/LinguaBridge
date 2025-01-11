@@ -13,7 +13,6 @@ import {
 } from '@/store/teachers/teachersSelectors';
 
 const ITEMS_PER_PAGE = 4;
-const STORAGE_KEY = 'teachersLoadedPages';
 
 const TeachersPage = () => {
   const dispatch = useAppDispatch();
@@ -24,35 +23,33 @@ const TeachersPage = () => {
   const [isLoadingMore, setIsLoadingMore] = useState(false);
 
   useEffect(() => {
-    const loadStoredPages = async () => {
-      const storedPages = Number(localStorage.getItem(STORAGE_KEY)) || 1;
-      for (let i = 0; i < storedPages; i++) {
-        await dispatch(fetchTeachers());
-      }
-    };
-
     if (teachers.length === 0) {
-      loadStoredPages();
+      dispatch(fetchTeachers());
     }
   }, [dispatch, teachers.length]);
 
   const handleLoadMore = async () => {
     if (isLoadingMore) return;
-    setIsLoadingMore(true);
-    const currentPages = Number(localStorage.getItem(STORAGE_KEY)) || 1;
-    localStorage.setItem(STORAGE_KEY, String(currentPages + 1));
-    await dispatch(fetchTeachers());
-    requestAnimationFrame(() => {
-      if (listRef.current) {
-        const firstCard = listRef.current.children[0] as HTMLDivElement;
-        const cardHeight = firstCard?.offsetHeight || 0;
-        window.scrollBy({
-          top: cardHeight + 32,
-          behavior: 'smooth',
-        });
-      }
+
+    try {
+      setIsLoadingMore(true);
+      await dispatch(fetchTeachers()).unwrap();
+
+      requestAnimationFrame(() => {
+        if (listRef.current) {
+          const firstCard = listRef.current.children[0] as HTMLDivElement;
+          const cardHeight = firstCard?.offsetHeight || 0;
+          window.scrollBy({
+            top: cardHeight + 32,
+            behavior: 'smooth',
+          });
+        }
+      });
+    } catch (error) {
+      console.error('Error loading more teachers:', error);
+    } finally {
       setIsLoadingMore(false);
-    });
+    }
   };
 
   if (loading && teachers.length === 0) {
