@@ -1,10 +1,16 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
-import { ref, set } from 'firebase/database';
-import { database } from '@/lib/firebase';
-import { addToFavorites, removeFromFavorites } from './favoritesSlice';
-import { setUser } from '../auth/authSlice';
 import type { RootState } from '@/store';
 import type { User } from '@/types/auth';
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import { db } from '@/lib/firebase';
+import { addToFavorites, removeFromFavorites } from './favoritesSlice';
+import { setUser } from '../auth/authSlice';
+import {
+  doc,
+  updateDoc,
+  getDoc,
+  arrayUnion,
+  arrayRemove,
+} from 'firebase/firestore';
 
 export const toggleFavoriteTeacher = createAsyncThunk(
   'favorites/toggleFavorite',
@@ -17,15 +23,19 @@ export const toggleFavoriteTeacher = createAsyncThunk(
         throw new Error('User not authenticated');
       }
 
-      const currentFavorites = [...(user.favorites || [])];
+      const userRef = doc(db, 'users', user.id);
+      const userDoc = await getDoc(userRef);
+
+      if (!userDoc.exists()) {
+        throw new Error('User document not found');
+      }
+
+      const currentFavorites = userDoc.data().favorites || [];
       const isFavorite = currentFavorites.includes(teacherId);
 
-      const newFavorites = isFavorite
-        ? currentFavorites.filter((id) => id !== teacherId)
-        : [...currentFavorites, teacherId];
-
-      const userFavoritesRef = ref(database, `users/${user.id}/favorites`);
-      await set(userFavoritesRef, newFavorites);
+      await updateDoc(userRef, {
+        favorites: isFavorite ? arrayRemove(teacherId) : arrayUnion(teacherId),
+      });
 
       if (isFavorite) {
         dispatch(removeFromFavorites(teacherId));
@@ -35,7 +45,9 @@ export const toggleFavoriteTeacher = createAsyncThunk(
 
       const updatedUser: User = {
         ...user,
-        favorites: newFavorites,
+        favorites: isFavorite
+          ? currentFavorites.filter((id: string) => id !== teacherId)
+          : [...currentFavorites, teacherId],
       };
       dispatch(setUser(updatedUser));
 

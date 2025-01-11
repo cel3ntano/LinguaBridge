@@ -1,16 +1,16 @@
+import type { User } from '@/types/auth';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { doc, setDoc, getDoc } from 'firebase/firestore';
+import { FirebaseError } from 'firebase/app';
+import { auth, db } from '@/lib/firebase';
+import { formatFirebaseError } from '@/lib/firebase/errors';
+import { clearFavorites } from '../favorites/favoritesSlice';
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut as firebaseSignOut,
   updateProfile,
 } from 'firebase/auth';
-import { ref, set, get } from 'firebase/database';
-import { FirebaseError } from 'firebase/app';
-import { auth, database } from '@/lib/firebase';
-import type { User } from '@/types/auth';
-import { formatFirebaseError } from '@/lib/firebase/errors';
-import { clearFavorites } from '../favorites/favoritesSlice';
 
 export const registerUser = createAsyncThunk(
   'auth/register',
@@ -32,7 +32,6 @@ export const registerUser = createAsyncThunk(
 
       await updateProfile(firebaseUser, { displayName: name });
 
-      const userRef = ref(database, `users/${firebaseUser.uid}`);
       const userData: User = {
         id: firebaseUser.uid,
         name,
@@ -40,8 +39,9 @@ export const registerUser = createAsyncThunk(
         favorites: [],
       };
 
+      const userRef = doc(db, 'users', firebaseUser.uid);
       try {
-        await set(userRef, userData);
+        await setDoc(userRef, userData);
       } catch (dbError) {
         console.error(dbError);
         await firebaseUser.delete();
@@ -74,21 +74,21 @@ export const loginUser = createAsyncThunk(
       );
       const { user: firebaseUser } = userCredential;
 
-      const userRef = ref(database, `users/${firebaseUser.uid}`);
-      const snapshot = await get(userRef);
+      const userRef = doc(db, 'users', firebaseUser.uid);
+      const userDoc = await getDoc(userRef);
 
-      if (!snapshot.exists()) {
+      if (!userDoc.exists()) {
         const userData: User = {
           id: firebaseUser.uid,
           name: firebaseUser.displayName || '',
           email: firebaseUser.email || '',
           favorites: [],
         };
-        await set(userRef, userData);
+        await setDoc(userRef, userData);
         return userData;
       }
 
-      return snapshot.val() as User;
+      return userDoc.data() as User;
     } catch (error) {
       if (error instanceof FirebaseError) {
         return rejectWithValue(formatFirebaseError(error));
