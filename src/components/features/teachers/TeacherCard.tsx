@@ -15,12 +15,14 @@ import UnauthorizedFavoritesModal from '../auth/UnauthorizedFavoritesModal';
 import RegistrationModal from '../auth/RegistrationModal';
 import LoginModal from '../auth/LoginModal';
 import Image from 'next/image';
-
+import { selectLevelFilter } from '@/store/filters/filtersSelectors';
+import { formatDatabaseLevel } from '@/lib/utils/formatters';
 interface TeacherCardProps {
   teacher: Teacher;
 }
 
 const TeacherCard = ({ teacher }: TeacherCardProps) => {
+  const currentLevelFilter = useAppSelector(selectLevelFilter);
   const isAuthenticated = useAppSelector(selectIsAuthenticated);
   const [isExpanded, setIsExpanded] = useState(false);
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
@@ -185,7 +187,9 @@ const TeacherCard = ({ teacher }: TeacherCardProps) => {
               <li
                 key={level}
                 className={`rounded-[35px] border border-text-primary/20 px-3 py-2 text-sm font-medium leading-4 ${
-                  level === 'A1 Beginner' ? 'bg-interactive-button' : ''
+                  formatDatabaseLevel(level) === currentLevelFilter
+                    ? 'bg-interactive-button'
+                    : ''
                 }`}
               >
                 #{level}
