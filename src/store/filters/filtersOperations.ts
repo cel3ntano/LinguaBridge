@@ -4,7 +4,6 @@ import { db } from '@/lib/firebase';
 import { setAvailableLanguages, setLoading, setError } from './filtersSlice';
 import { clearTeachers } from '../teachers/teachersSlice';
 import { fetchTeachers } from '../teachers/teachersOperations';
-import { formatDisplayLevel } from '@/lib/utils/formatters';
 
 export const fetchLanguageOptions = createAsyncThunk(
   'filters/fetchLanguageOptions',
@@ -21,7 +20,7 @@ export const fetchLanguageOptions = createAsyncThunk(
         if (data.languages) {
           Object.entries(data.languages).forEach(([lang, isAvailable]) => {
             if (isAvailable) {
-              languagesSet.add(formatDisplayLevel(lang));
+              languagesSet.add(lang);
             }
           });
         }

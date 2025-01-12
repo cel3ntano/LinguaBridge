@@ -14,17 +14,7 @@ import {
 import { db } from '@/lib/firebase';
 import type { RootState } from '@/store';
 import { formatDisplayLevel } from '@/lib/utils/formatters';
-
-const PAGE_SIZE = 4;
-
-const LEVEL_ORDER = [
-  'A1_Beginner',
-  'A2_Elementary',
-  'B1_Intermediate',
-  'B2_Upper_Intermediate',
-  'C1_Advanced',
-  'C2_Proficient',
-];
+import { LEVEL_ORDER, TEACHERS_PER_PAGE } from '@/constants/teachers';
 
 const sortLevels = (levels: string[]): string[] => {
   return levels.sort((a, b) => {
@@ -33,7 +23,6 @@ const sortLevels = (levels: string[]): string[] => {
     return indexA - indexB;
   });
 };
-
 export const fetchTeachers = createAsyncThunk(
   'teachers/fetchTeachers',
   async (_, { getState }) => {
@@ -63,7 +52,7 @@ export const fetchTeachers = createAsyncThunk(
         }
       }
 
-      queryConstraints.push(limit(PAGE_SIZE + 1));
+      queryConstraints.push(limit(TEACHERS_PER_PAGE + 1));
 
       const finalQuery = query(teachersRef, ...queryConstraints);
       const snapshot: QuerySnapshot = await getDocs(finalQuery);
@@ -77,8 +66,8 @@ export const fetchTeachers = createAsyncThunk(
       }
 
       const docs = snapshot.docs;
-      const hasMore = docs.length > PAGE_SIZE;
-      const currentPageDocs = docs.slice(0, PAGE_SIZE);
+      const hasMore = docs.length > TEACHERS_PER_PAGE;
+      const currentPageDocs = docs.slice(0, TEACHERS_PER_PAGE);
 
       const teachers = currentPageDocs.map((doc) => {
         const data = doc.data();
@@ -88,7 +77,7 @@ export const fetchTeachers = createAsyncThunk(
 
         const levels = Object.entries(data.levels || {})
           .filter(([, isAvailable]) => isAvailable)
-          .map(([level]) => level); // Don't format here yet
+          .map(([level]) => level);
 
         return {
           id: doc.id,

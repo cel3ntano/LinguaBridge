@@ -50,7 +50,6 @@ export const toggleFavoriteTeacher = createAsyncThunk(
           : [...currentFavorites, teacherId],
       };
       dispatch(setUser(updatedUser));
-
       return { teacherId, isFavorite: !isFavorite };
     } catch (error) {
       console.error('Error toggling favorite:', error);

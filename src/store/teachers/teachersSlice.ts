@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import { fetchTeachers } from './teachersOperations';
 import type { TeachersState } from '@/types/teachers';
 
@@ -23,21 +23,22 @@ const teachersSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchTeachers.fulfilled, (state, action) => {
-        if (state.items.length === 0) {
-          state.items = action.payload.teachers;
-        } else {
-          state.items = [...state.items, ...action.payload.teachers];
-        }
+        state.items =
+          state.items.length === 0
+            ? action.payload.teachers
+            : [...state.items, ...action.payload.teachers];
         state.lastDocId = action.payload.lastDocId;
         state.hasMore = action.payload.hasMore;
-        state.loading = false;
-        state.error = null;
       })
-      .addCase(fetchTeachers.pending, (state) => {
+      .addMatcher(isAnyOf(fetchTeachers.pending), (state) => {
         state.loading = true;
         state.error = null;
       })
-      .addCase(fetchTeachers.rejected, (state, action) => {
+      .addMatcher(isAnyOf(fetchTeachers.fulfilled), (state) => {
+        state.loading = false;
+        state.error = null;
+      })
+      .addMatcher(isAnyOf(fetchTeachers.rejected), (state, action) => {
         state.loading = false;
         state.error = action.error.message || 'Failed to fetch teachers';
       });

@@ -1,4 +1,3 @@
-'use client';
 import { useCallback, useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '@/lib/hooks';
 import {
@@ -19,22 +18,12 @@ import {
   selectIsLoading,
 } from '@/store/filters/filtersSelectors';
 import Button from '@/components/common/Button';
+import CustomSelect from '@/components/common/CustomSelect';
 import {
   formatDisplayLevel,
   formatDatabaseLevel,
 } from '@/lib/utils/formatters';
-import Icon from '@/components/common/Icon';
-
-const LEVELS = [
-  'A1_Beginner',
-  'A2_Elementary',
-  'B1_Intermediate',
-  'B2_Upper_Intermediate',
-  'C1_Advanced',
-  'C2_Proficient',
-];
-
-const PRICES = [10, 20, 30, 40];
+import { PRICE_OPTIONS, TEACHER_LEVELS } from '@/constants/teachers';
 
 const TeacherFilters = () => {
   const dispatch = useAppDispatch();
@@ -60,28 +49,23 @@ const TeacherFilters = () => {
     handleFiltersChange();
   }, [language, level, price, handleFiltersChange]);
 
-  const handleLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    dispatch(setLanguageFilter(formatDatabaseLevel(e.target.value)));
-  };
-
-  const handleLevelChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    dispatch(setLevelFilter(formatDatabaseLevel(e.target.value)));
-  };
-
-  const handlePriceChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const value = e.target.value ? parseInt(e.target.value, 10) : null;
-    dispatch(setPriceFilter(value));
-  };
-
   const handleReset = () => {
     dispatch(resetFilters());
   };
 
-  const selectWrapperClasses = 'relative';
-  const selectClasses =
-    'h-[50px] appearance-none rounded-xl border border-text-primary/10 bg-white px-4 py-3.5 text-lg font-medium leading-5 text-text-primary focus:outline-none focus:ring-1 focus:ring-accent-primary transition-colors hover:border-accent-primary';
-  const iconClasses =
-    'absolute right-[18px] top-1/2 -translate-y-1/2 pointer-events-none h-5 w-5 stroke-brand-dark fill-brand-dark';
+  const handleLanguageChange = (value: string) => {
+    dispatch(
+      setLanguageFilter(value === 'all' ? '' : formatDatabaseLevel(value)),
+    );
+  };
+
+  const handleLevelChange = (value: string) => {
+    dispatch(setLevelFilter(value === 'all' ? '' : formatDatabaseLevel(value)));
+  };
+
+  const handlePriceChange = (value: string) => {
+    dispatch(setPriceFilter(value === 'all' ? null : parseInt(value, 10)));
+  };
 
   return (
     <div className="mb-8">
@@ -93,27 +77,17 @@ const TeacherFilters = () => {
           >
             Languages
           </label>
-          <div className={selectWrapperClasses}>
-            <select
-              id="language-select"
-              value={formatDisplayLevel(language)}
-              onChange={handleLanguageChange}
-              className={`${selectClasses} w-[220px]`}
-              disabled={isLoading}
-            >
-              <option value="">All Languages</option>
-              {languages.map((lang) => (
-                <option
-                  key={lang}
-                  value={lang}
-                  className="text-lg font-medium leading-5 hover:text-text-primary text-text-primary/20"
-                >
-                  {formatDisplayLevel(lang)}
-                </option>
-              ))}
-            </select>
-            <Icon id="#arrow" className={iconClasses} />
-          </div>
+          <CustomSelect
+            value={language}
+            onChange={handleLanguageChange}
+            options={languages.map((lang) => ({
+              value: lang,
+              label: formatDisplayLevel(lang),
+            }))}
+            placeholder="All Languages"
+            disabled={isLoading}
+            width="w-[220px]"
+          />
         </div>
 
         <div className="flex flex-col">
@@ -123,27 +97,17 @@ const TeacherFilters = () => {
           >
             Level of knowledge
           </label>
-          <div className={selectWrapperClasses}>
-            <select
-              id="level-select"
-              value={level}
-              onChange={handleLevelChange}
-              className={`${selectClasses} w-[240px]`}
-              disabled={isLoading}
-            >
-              <option value="">All Levels</option>
-              {LEVELS.map((level) => (
-                <option
-                  key={level}
-                  value={level}
-                  className="text-lg font-medium leading-5 hover:text-text-primary text-text-primary/20"
-                >
-                  {formatDisplayLevel(level)}
-                </option>
-              ))}
-            </select>
-            <Icon id="#arrow" className={iconClasses} />
-          </div>
+          <CustomSelect
+            value={level}
+            onChange={handleLevelChange}
+            options={TEACHER_LEVELS.map((level) => ({
+              value: level,
+              label: formatDisplayLevel(level),
+            }))}
+            placeholder="All Levels"
+            disabled={isLoading}
+            width="w-[200px]"
+          />
         </div>
 
         <div className="flex flex-col">
@@ -153,27 +117,18 @@ const TeacherFilters = () => {
           >
             Price
           </label>
-          <div className={selectWrapperClasses}>
-            <select
-              id="price-select"
-              value={price || ''}
-              onChange={handlePriceChange}
-              className={`${selectClasses} w-[140px]`}
-              disabled={isLoading}
-            >
-              <option value="">All Prices</option>
-              {PRICES.map((price) => (
-                <option
-                  key={price}
-                  value={price}
-                  className="text-lg font-medium leading-5 hover:text-text-primary text-text-primary/20"
-                >
-                  {`${price} $`}
-                </option>
-              ))}
-            </select>
-            <Icon id="#arrow" className={iconClasses} />
-          </div>
+          <CustomSelect
+            value={price?.toString() || 'all'}
+            onChange={handlePriceChange}
+            options={PRICE_OPTIONS.map((price) => ({
+              value: price.toString(),
+              label: price.toString(),
+            }))}
+            formatDisplayValue={(value) => `${value} $`}
+            placeholder="All prices"
+            disabled={isLoading}
+            width="w-[124px]"
+          />
         </div>
 
         {(language || level || price) && (

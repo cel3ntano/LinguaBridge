@@ -1,15 +1,7 @@
 import { ReactNode, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { onAuthStateChanged } from 'firebase/auth';
-import {
-  doc,
-  getDoc,
-  collection,
-  getDocs,
-  query,
-  where,
-  setDoc,
-} from 'firebase/firestore';
+import { doc, getDoc, collection, setDoc } from 'firebase/firestore';
 import { auth, db } from '@/lib/firebase';
 import { setUser } from '@/store/auth/authSlice';
 import { clearFavorites, setFavorites } from '@/store/favorites/favoritesSlice';
@@ -37,17 +29,12 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
             if (favorites.length > 0) {
               const teachersRef = collection(db, 'teachers');
-              const teacherQuery = query(
-                teachersRef,
-                where('id', 'in', favorites),
-              );
-
-              const teacherDocs = await getDocs(teacherQuery);
-              teacherDocs.forEach((doc) => {
-                if (doc.exists()) {
-                  validFavorites.push(doc.id);
+              for (const favoriteId of favorites) {
+                const teacherDoc = await getDoc(doc(teachersRef, favoriteId));
+                if (teacherDoc.exists()) {
+                  validFavorites.push(favoriteId);
                 }
-              });
+              }
 
               if (validFavorites.length !== favorites.length) {
                 await setDoc(
