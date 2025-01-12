@@ -7,7 +7,7 @@ const initialState: TeachersState = {
   lastDocId: null,
   loading: false,
   error: null,
-  hasMore: true,
+  hasMore: false,
 };
 
 const teachersSlice = createSlice({
@@ -17,7 +17,7 @@ const teachersSlice = createSlice({
     clearTeachers: (state) => {
       state.items = [];
       state.lastDocId = null;
-      state.hasMore = true;
+      state.hasMore = false;
     },
   },
   extraReducers: (builder) => {

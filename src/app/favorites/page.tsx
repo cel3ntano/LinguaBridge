@@ -1,10 +1,9 @@
 'use client';
 import { useEffect } from 'react';
 import { redirect } from 'next/navigation';
-import { useAppDispatch, useAppSelector } from '@/lib/hooks';
+import { useAppSelector } from '@/lib/hooks';
 import { selectIsAuthenticated } from '@/store/auth/authSelectors';
 import { selectFavorites } from '@/store/favorites/favoritesSelectors';
-import { fetchTeachers } from '@/store/teachers/teachersOperations';
 import TeacherCard from '@/components/features/teachers/TeacherCard';
 import TeacherCardSkeleton from '@/components/features/teachers/TeacherCardSkeleton';
 import TeacherFilters from '@/components/features/teachers/TeacherFilters';
@@ -14,7 +13,6 @@ import {
 } from '@/store/teachers/teachersSelectors';
 
 const FavoritesPage = () => {
-  const dispatch = useAppDispatch();
   const isAuthenticated = useAppSelector(selectIsAuthenticated);
   const allTeachers = useAppSelector(selectTeachers);
   const loading = useAppSelector(selectIsLoading);
@@ -25,12 +23,6 @@ const FavoritesPage = () => {
       redirect('/');
     }
   }, [isAuthenticated]);
-
-  useEffect(() => {
-    if (allTeachers.length === 0) {
-      dispatch(fetchTeachers());
-    }
-  }, [dispatch, allTeachers.length]);
 
   const favoriteTeachers = allTeachers.filter((teacher) =>
     favorites.includes(teacher.id),

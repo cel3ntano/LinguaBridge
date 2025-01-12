@@ -1,0 +1,1741 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.English",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.A1_Beginner",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.English",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.A2_Elementary",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.English",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.B1_Intermediate",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.English",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.B2_Upper_Intermediate",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.English",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.C1_Advanced",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.English",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.C2_Proficient",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.Spanish",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.A1_Beginner",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.Spanish",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.A2_Elementary",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.Spanish",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.B1_Intermediate",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.Spanish",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.B2_Upper_Intermediate",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.Spanish",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.C1_Advanced",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.Spanish",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.C2_Proficient",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.French",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.A1_Beginner",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.French",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.A2_Elementary",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.French",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.B1_Intermediate",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.French",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.B2_Upper_Intermediate",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.French",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.C1_Advanced",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.French",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.C2_Proficient",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.German",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.A1_Beginner",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.German",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.A2_Elementary",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.German",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.B1_Intermediate",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.German",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.B2_Upper_Intermediate",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.German",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.C1_Advanced",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.German",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.C2_Proficient",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.Mandarin_Chinese",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.A1_Beginner",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.Mandarin_Chinese",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.A2_Elementary",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.Mandarin_Chinese",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.B1_Intermediate",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.Mandarin_Chinese",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.B2_Upper_Intermediate",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.Mandarin_Chinese",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.C1_Advanced",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.Mandarin_Chinese",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.C2_Proficient",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.Italian",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.A1_Beginner",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.Italian",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.A2_Elementary",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.Italian",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.B1_Intermediate",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.Italian",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.B2_Upper_Intermediate",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.Italian",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.C1_Advanced",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.Italian",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.C2_Proficient",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.Vietnamese",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.A1_Beginner",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.Vietnamese",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.A2_Elementary",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.Vietnamese",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.B1_Intermediate",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.Vietnamese",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.B2_Upper_Intermediate",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.Vietnamese",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.C1_Advanced",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.Vietnamese",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.C2_Proficient",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.Korean",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.A1_Beginner",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.Korean",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.A2_Elementary",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.Korean",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.B1_Intermediate",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.Korean",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.B2_Upper_Intermediate",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.Korean",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.C1_Advanced",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.Korean",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.C2_Proficient",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.English",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "price_per_hour",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.Spanish",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "price_per_hour",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.French",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "price_per_hour",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.German",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "price_per_hour",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.Mandarin_Chinese",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "price_per_hour",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.Italian",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "price_per_hour",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.Vietnamese",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "price_per_hour",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.Korean",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "price_per_hour",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "levels.A1_Beginner",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "price_per_hour",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "levels.A2_Elementary",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "price_per_hour",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "levels.B1_Intermediate",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "price_per_hour",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "levels.B2_Upper_Intermediate",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "price_per_hour",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "levels.C1_Advanced",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "price_per_hour",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "levels.C2_Proficient",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "price_per_hour",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.English",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.A1_Beginner",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "price_per_hour",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.English",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.A2_Elementary",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "price_per_hour",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.English",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.B1_Intermediate",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "price_per_hour",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.English",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.B2_Upper_Intermediate",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "price_per_hour",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.English",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.C1_Advanced",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "price_per_hour",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.English",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.C2_Proficient",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "price_per_hour",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.Spanish",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.A1_Beginner",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "price_per_hour",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.Spanish",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.A2_Elementary",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "price_per_hour",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.Spanish",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.B1_Intermediate",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "price_per_hour",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.Spanish",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.B2_Upper_Intermediate",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "price_per_hour",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.Spanish",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.C1_Advanced",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "price_per_hour",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.Spanish",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.C2_Proficient",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "price_per_hour",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.French",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.A1_Beginner",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "price_per_hour",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.French",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.A2_Elementary",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "price_per_hour",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.French",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.B1_Intermediate",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "price_per_hour",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.French",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.B2_Upper_Intermediate",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "price_per_hour",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.French",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.C1_Advanced",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "price_per_hour",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.French",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.C2_Proficient",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "price_per_hour",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.German",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.A1_Beginner",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "price_per_hour",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.German",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.A2_Elementary",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "price_per_hour",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.German",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.B1_Intermediate",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "price_per_hour",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.German",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.B2_Upper_Intermediate",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "price_per_hour",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.German",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.C1_Advanced",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "price_per_hour",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.German",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.C2_Proficient",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "price_per_hour",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.Mandarin_Chinese",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.A1_Beginner",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "price_per_hour",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.Mandarin_Chinese",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.A2_Elementary",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "price_per_hour",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.Mandarin_Chinese",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.B1_Intermediate",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "price_per_hour",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.Mandarin_Chinese",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.B2_Upper_Intermediate",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "price_per_hour",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.Mandarin_Chinese",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.C1_Advanced",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "price_per_hour",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.Mandarin_Chinese",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.C2_Proficient",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "price_per_hour",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.Italian",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.A1_Beginner",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "price_per_hour",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.Italian",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.A2_Elementary",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "price_per_hour",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.Italian",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.B1_Intermediate",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "price_per_hour",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.Italian",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.B2_Upper_Intermediate",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "price_per_hour",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.Italian",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.C1_Advanced",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "price_per_hour",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.Italian",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.C2_Proficient",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "price_per_hour",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.Vietnamese",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.A1_Beginner",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "price_per_hour",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.Vietnamese",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.A2_Elementary",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "price_per_hour",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.Vietnamese",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.B1_Intermediate",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "price_per_hour",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.Vietnamese",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.B2_Upper_Intermediate",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "price_per_hour",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.Vietnamese",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.C1_Advanced",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "price_per_hour",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.Vietnamese",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.C2_Proficient",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "price_per_hour",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.Korean",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.A1_Beginner",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "price_per_hour",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.Korean",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.A2_Elementary",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "price_per_hour",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.Korean",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.B1_Intermediate",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "price_per_hour",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.Korean",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.B2_Upper_Intermediate",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "price_per_hour",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.Korean",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.C1_Advanced",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "price_per_hour",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "teachers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "languages.Korean",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "levels.C2_Proficient",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "price_per_hour",
+          "order": "ASCENDING"
+        }
+      ]
+    }
+  ],
+  "fieldOverrides": []
+}

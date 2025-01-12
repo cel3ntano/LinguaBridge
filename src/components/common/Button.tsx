@@ -7,7 +7,8 @@ type ButtonVariant =
   | 'icon'
   | 'login'
   | 'logout'
-  | 'registration';
+  | 'registration'
+  | 'reset';
 type ButtonSize = 'default' | 'large' | 'icon';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -33,6 +34,8 @@ const getButtonClasses = (
     logout: 'bg-transparent text-text-primary hover:text-accent-primary py-3.5',
     registration:
       'bg-text-primary text-background-primary font-bold hover:bg-accent-light px-10 py-3.5 leading-5',
+    reset:
+      'h-[50px] border border-text-primary/10 bg-brand-white text-text-primary hover:text-accent-primary px-4 py-3.5 leading-[18px]',
   };
 
   const sizeClasses = {

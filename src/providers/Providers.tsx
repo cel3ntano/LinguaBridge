@@ -1,8 +1,10 @@
 'use client';
 
 import { Provider } from 'react-redux';
-import { store } from '@/store';
+import { PersistGate } from 'redux-persist/integration/react';
+import { store, persistor } from '@/store';
 import { AuthProvider } from './AuthProvider';
+import LoadingScreen from '@/components/common/LoadingScreen';
 
 interface ProvidersProps {
   children: React.ReactNode;
@@ -11,7 +13,9 @@ interface ProvidersProps {
 export function Providers({ children }: ProvidersProps) {
   return (
     <Provider store={store}>
-      <AuthProvider>{children}</AuthProvider>
+      <PersistGate loading={<LoadingScreen />} persistor={persistor}>
+        <AuthProvider>{children}</AuthProvider>
+      </PersistGate>
     </Provider>
   );
 }
