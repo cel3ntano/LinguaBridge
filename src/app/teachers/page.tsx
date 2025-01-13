@@ -48,7 +48,7 @@ const TeachersPage = () => {
 
   if (loading && teachers.length === 0) {
     return (
-      <main className="bg-background-backdrop px-32 py-24">
+      <main className="bg-background-backdrop px-8 py-6 lg:px-32 lg:py-24">
         <div className="mx-auto max-w-[1440px]">
           <TeacherFilters />
           <div className="space-y-8">
@@ -62,7 +62,7 @@ const TeachersPage = () => {
   }
 
   return (
-    <main className="bg-background-backdrop px-32 py-24">
+    <main className="bg-background-backdrop px-8 py-6 xl:px-32 xl:py-24">
       <div className="mx-auto max-w-[1440px]">
         <TeacherFilters />
         <div ref={listRef} className="space-y-8">

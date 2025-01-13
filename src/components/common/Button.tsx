@@ -29,7 +29,7 @@ const getButtonClasses = (
       'bg-interactive-button hover:bg-interactive-buttonHover text-text-primary font-bold',
     secondary:
       'bg-transparent text-text-primary border border-text-primary hover:bg-background-backdrop',
-    icon: 'bg-transparent p-0 hover:opacity-80',
+    icon: 'bg-transparent p-0 hover:opacity-70 transition-opacity',
     login: 'bg-transparent text-text-primary hover:text-accent-primary',
     logout: 'bg-transparent text-text-primary hover:text-accent-primary py-3.5',
     registration:

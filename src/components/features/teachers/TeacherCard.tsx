@@ -17,6 +17,7 @@ import LoginModal from '../auth/LoginModal';
 import Image from 'next/image';
 import { selectLevelFilter } from '@/store/filters/filtersSelectors';
 import { formatDatabaseLevel } from '@/lib/utils/formatters';
+
 interface TeacherCardProps {
   teacher: Teacher;
 }
@@ -45,57 +46,59 @@ const TeacherCard = ({ teacher }: TeacherCardProps) => {
   };
 
   return (
-    <div className="rounded-3xl bg-brand-white p-6">
-      <div className="flex gap-12">
-        <div className="relative h-[120px] w-[120px] rounded-full border-[3px] border-interactive-avatar bg-brand-white p-3">
-          <div className="relative">
-            <Image
-              src={teacher.avatar_url}
-              alt={`${teacher.name} ${teacher.surname}`}
-              width={96}
-              height={96}
-              className="rounded-full"
-            />
-            <Icon
-              id="#online"
-              className="absolute right-1 top-1 h-4 w-4 fill-brand-limeGreen rounded-full border-[3px] border-brand-white"
-            />
+    <div className="rounded-3xl bg-brand-white p-4 sm:p-5 md:p-6">
+      <div className="flex flex-col gap-4 sm:gap-6 md:flex-row xl:gap-12">
+        <div className="flex justify-center md:block">
+          <div className="relative h-[120px] w-[120px] rounded-full border-[3px] border-interactive-avatar bg-brand-white p-3">
+            <div className="relative">
+              <Image
+                src={teacher.avatar_url}
+                alt={`${teacher.name} ${teacher.surname}`}
+                width={96}
+                height={96}
+                className="rounded-full"
+              />
+              <Icon
+                id="#online"
+                className="absolute right-1 top-1 h-4 w-4 fill-brand-limeGreen rounded-full border-[3px] border-brand-white"
+              />
+            </div>
           </div>
         </div>
 
         <div className="flex-1">
-          <div className="flex justify-between">
-            <div className="flex flex-1 items-center">
-              <p className="text-text-secondary text-base font-medium leading-6">
+          <div className="flex flex-col gap-4 sm:flex-row sm:justify-between">
+            <div className="flex flex-1 flex-col lg:flex-row sm:items-center">
+              <p className="text-center text-text-secondary text-base font-medium leading-6 sm:text-left">
                 Teacher information
               </p>
 
-              <ul className="flex items-center ml-auto">
-                <li className="flex items-center">
+              <ul className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-2 md:ml-auto md:mt-2">
+                <li className="flex items-center justify-center sm:justify-start">
                   <Icon
                     id="#book"
-                    className="h-4 w-4 fill-none stroke-brand-dark"
+                    className="h-4 w-4 shrink-0 fill-none stroke-brand-dark"
                   />
                   <span className="ml-2 text-text-primary text-base font-medium leading-6">
                     Lessons online
                   </span>
                 </li>
-                <li className="mx-4 h-4 w-px bg-text-primary/20" />
-                <li className="text-text-primary text-base font-medium leading-6">
+                <li className="hidden sm:block sm:h-4 sm:w-px xl:mx-4 sm:bg-text-primary/20" />
+                <li className="text-center text-text-primary text-base font-medium leading-6 sm:text-left">
                   Lessons done: {teacher.lessons_done}
                 </li>
-                <li className="mx-4 h-4 w-px bg-text-primary/20" />
-                <li className="flex items-center">
+                <li className="hidden sm:block sm:h-4 sm:w-px xl:mx-4 sm:bg-text-primary/20" />
+                <li className="flex items-center justify-center sm:justify-start">
                   <Icon
                     id="#star"
-                    className="h-5 w-5 fill-interactive-rating"
+                    className="h-5 w-5 shrink-0 fill-interactive-rating"
                   />
                   <span className="ml-2 text-text-primary text-base font-medium leading-6">
                     Rating: {teacher.rating.toFixed(1)}
                   </span>
                 </li>
-                <li className="mx-4 h-4 w-px bg-text-primary/20" />
-                <li className="text-text-primary text-base font-medium leading-6">
+                <li className="hidden sm:block sm:h-4 sm:w-px xl:mx-4 sm:bg-text-primary/20" />
+                <li className="text-center text-text-primary text-base font-medium leading-6 sm:text-left">
                   Price / 1 hour:{' '}
                   <span className="text-interactive-price">
                     {teacher.price_per_hour}$
@@ -107,32 +110,32 @@ const TeacherCard = ({ teacher }: TeacherCardProps) => {
             <Button
               variant="icon"
               size="icon"
-              className="ml-16"
+              className="mx-auto sm:mx-0 sm:ml-4 xl:ml-16"
               onClick={handleFavoriteClick}
             >
               <Icon
                 id="#heart"
                 className={`h-[26px] w-[26px] ${
                   isFavorite
-                    ? ' stroke-interactive-favorite fill-none transition-colors'
-                    : 'stroke-text-primary fill-none '
+                    ? 'stroke-interactive-button fill-interactive-button transition-all'
+                    : 'stroke-text-primary fill-none transition-all'
                 }`}
               />
             </Button>
           </div>
 
-          <h3 className="mt-2 text-text-primary text-2xl font-medium leading-6">
+          <h3 className="mt-4 text-center text-text-primary text-2xl font-medium leading-6 sm:mt-2 sm:text-left">
             {teacher.name} {teacher.surname}
           </h3>
 
-          <div className="mt-8">
+          <div className="mt-6 space-y-4 sm:mt-8 sm:space-y-2">
             <p className="text-base leading-6">
               <span className="text-text-secondary font-medium">Speaks: </span>
               <span className="text-text-primary font-medium underline">
                 {teacher.languages.join(', ')}
               </span>
             </p>
-            <p className="mt-2 text-base leading-6">
+            <p className="text-base leading-6">
               <span className="text-text-secondary font-medium">
                 Lesson Info:{' '}
               </span>
@@ -140,7 +143,7 @@ const TeacherCard = ({ teacher }: TeacherCardProps) => {
                 {teacher.lesson_info}
               </span>
             </p>
-            <p className="mt-2 text-base leading-6">
+            <p className="text-base leading-6">
               <span className="text-text-secondary font-medium">
                 Conditions:{' '}
               </span>
@@ -168,7 +171,7 @@ const TeacherCard = ({ teacher }: TeacherCardProps) => {
           </AnimatePresence>
 
           <button
-            className="mt-4 flex items-center text-text-primary text-base font-medium leading-6 hover:text-accent-primary transition-colors"
+            className="mt-4 flex items-center justify-center text-text-primary text-base font-medium leading-6 hover:text-accent-primary transition-colors sm:justify-start"
             onClick={() => setIsExpanded(!isExpanded)}
           >
             <span className="underline mr-1">
@@ -182,7 +185,7 @@ const TeacherCard = ({ teacher }: TeacherCardProps) => {
             </motion.div>
           </button>
 
-          <ul className="mt-8 flex flex-wrap gap-2">
+          <ul className="mt-6 flex flex-wrap justify-center gap-2 sm:justify-start sm:mt-8">
             {teacher.levels.map((level) => (
               <li
                 key={level}
@@ -204,10 +207,10 @@ const TeacherCard = ({ teacher }: TeacherCardProps) => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 20 }}
                 transition={{ duration: 0.1 }}
-                className="mt-8"
+                className="mt-6 flex justify-center sm:justify-start sm:mt-8"
               >
                 <Button
-                  className="w-fit px-12"
+                  className="w-full px-12 sm:w-fit"
                   size="large"
                   onClick={() => setIsBookingModalOpen(true)}
                 >
