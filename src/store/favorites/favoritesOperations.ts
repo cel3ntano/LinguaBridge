@@ -1,5 +1,4 @@
 import type { RootState } from '@/store';
-import type { User } from '@/types/auth';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { db } from '@/lib/firebase';
 import { addToFavorites, removeFromFavorites } from './favoritesSlice';
@@ -14,14 +13,26 @@ import {
 
 export const toggleFavoriteTeacher = createAsyncThunk(
   'favorites/toggleFavorite',
-  async (teacherId: string, { getState, dispatch }) => {
-    try {
-      const state = getState() as RootState;
-      const user = state.auth.user;
+  async (teacherId: string, { getState, dispatch, rejectWithValue }) => {
+    const state = getState() as RootState;
+    const user = state.auth.user;
 
-      if (!user) {
-        throw new Error('User not authenticated');
-      }
+    if (!user) {
+      return rejectWithValue('User not authenticated');
+    }
+
+    const currentFavorites = [...user.favorites];
+    const isFavorite = currentFavorites.includes(teacherId);
+
+    try {
+      const updatedFavorites = isFavorite
+        ? currentFavorites.filter((id) => id !== teacherId)
+        : [...currentFavorites, teacherId];
+
+      dispatch(
+        isFavorite ? removeFromFavorites(teacherId) : addToFavorites(teacherId),
+      );
+      dispatch(setUser({ ...user, favorites: updatedFavorites }));
 
       const userRef = doc(db, 'users', user.id);
       const userDoc = await getDoc(userRef);
@@ -30,28 +41,17 @@ export const toggleFavoriteTeacher = createAsyncThunk(
         throw new Error('User document not found');
       }
 
-      const currentFavorites = userDoc.data().favorites || [];
-      const isFavorite = currentFavorites.includes(teacherId);
-
       await updateDoc(userRef, {
         favorites: isFavorite ? arrayRemove(teacherId) : arrayUnion(teacherId),
       });
 
-      if (isFavorite) {
-        dispatch(removeFromFavorites(teacherId));
-      } else {
-        dispatch(addToFavorites(teacherId));
-      }
-
-      const updatedUser: User = {
-        ...user,
-        favorites: isFavorite
-          ? currentFavorites.filter((id: string) => id !== teacherId)
-          : [...currentFavorites, teacherId],
-      };
-      dispatch(setUser(updatedUser));
       return { teacherId, isFavorite: !isFavorite };
     } catch (error) {
+      dispatch(
+        isFavorite ? addToFavorites(teacherId) : removeFromFavorites(teacherId),
+      );
+      dispatch(setUser({ ...user, favorites: currentFavorites }));
+
       console.error('Error toggling favorite:', error);
       throw error;
     }

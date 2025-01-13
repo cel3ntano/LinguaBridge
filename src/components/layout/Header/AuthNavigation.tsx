@@ -20,9 +20,15 @@ const AuthNavigation = ({ onLogin, onRegister }: AuthNavigationProps) => {
 
   if (isAuthenticated && user) {
     return (
-      <div className="flex items-center space-x-4">
-        <span className="text-text-primary text-lg">{user.name}</span>
-        <Button variant="logout" onClick={handleLogout}>
+      <div className="flex items-center gap-2 sm:gap-4">
+        <span className="text-text-primary text-base sm:text-lg truncate max-w-[120px] sm:max-w-none">
+          {user.name}
+        </span>
+        <Button
+          variant="logout"
+          onClick={handleLogout}
+          className="px-2 sm:px-4"
+        >
           Log out
         </Button>
       </div>
@@ -30,14 +36,23 @@ const AuthNavigation = ({ onLogin, onRegister }: AuthNavigationProps) => {
   }
 
   return (
-    <div className="flex items-center space-x-4">
-      <Button variant="login" onClick={onLogin} className="flex items-center">
+    <div className="flex items-center gap-2 sm:gap-4">
+      <Button
+        variant="login"
+        onClick={onLogin}
+        className="flex items-center px-2 sm:px-4"
+      >
         <Icon id="#login" className="w-5 h-5 stroke-accent-light fill-none" />
-        <span className="ml-2">Log in</span>
+        <span className="ml-2 hidden sm:inline">Log in</span>
       </Button>
 
-      <Button variant="registration" onClick={onRegister}>
-        Registration
+      <Button
+        variant="registration"
+        onClick={onRegister}
+        className="px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base"
+      >
+        <span className="hidden sm:inline">Registration</span>
+        <span className="sm:hidden">Sign Up</span>
       </Button>
     </div>
   );

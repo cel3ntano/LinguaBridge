@@ -69,8 +69,8 @@ const TeacherFilters = () => {
 
   return (
     <div className="mb-8">
-      <div className="flex items-end gap-5">
-        <div className="flex flex-col">
+      <div className="flex flex-col gap-4 sm:gap-5 sm:flex-row sm:items-end">
+        <div className="flex flex-col w-full sm:w-auto">
           <label
             htmlFor="language-select"
             className="mb-2 text-sm font-medium leading-[18px] text-brand-gray"
@@ -86,11 +86,11 @@ const TeacherFilters = () => {
             }))}
             placeholder="All Languages"
             disabled={isLoading}
-            width="w-[220px]"
+            width="w-full sm:w-[220px]"
           />
         </div>
 
-        <div className="flex flex-col">
+        <div className="flex flex-col w-full sm:w-auto">
           <label
             htmlFor="level-select"
             className="mb-2 text-sm font-medium leading-[18px] text-brand-gray"
@@ -106,11 +106,11 @@ const TeacherFilters = () => {
             }))}
             placeholder="All Levels"
             disabled={isLoading}
-            width="w-[200px]"
+            width="w-full sm:w-[200px]"
           />
         </div>
 
-        <div className="flex flex-col">
+        <div className="flex flex-col w-full sm:w-auto">
           <label
             htmlFor="price-select"
             className="mb-2 text-sm font-medium leading-[18px] text-brand-gray"
@@ -127,19 +127,22 @@ const TeacherFilters = () => {
             formatDisplayValue={(value) => `${value} $`}
             placeholder="All prices"
             disabled={isLoading}
-            width="w-[124px]"
+            width="w-full sm:w-[124px]"
           />
         </div>
 
         {(language || level || price) && (
-          <Button
-            variant="reset"
-            onClick={handleReset}
-            disabled={isLoading}
-            aria-label="Reset all filters"
-          >
-            Reset filters
-          </Button>
+          <div className="w-full sm:w-auto">
+            <Button
+              variant="reset"
+              onClick={handleReset}
+              disabled={isLoading}
+              aria-label="Reset all filters"
+              className="w-full sm:w-auto"
+            >
+              Reset filters
+            </Button>
+          </div>
         )}
       </div>
     </div>

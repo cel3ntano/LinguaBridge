@@ -29,8 +29,8 @@ const Modal = ({
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogOverlay className="animate-overlay bg-brand-dark/10 backdrop-blur-[2px]" />
-      <DialogContent className="animate-modal max-h-[90vh] max-w-[566px] rounded-[30px] overflow-hidden flex flex-col">
-        <div className="px-16 pt-16">
+      <DialogContent className="animate-modal max-h-[90vh] max-w-[350px] sm:max-w-[500px] md:max-w-[566px] rounded-[30px] overflow-hidden flex flex-col">
+        <div className="px-8 pt-8 md:px-16 md:pt-16">
           <DialogHeader className="flex-shrink-0">
             <DialogClose asChild>
               <Button
@@ -46,7 +46,7 @@ const Modal = ({
                 />
               </Button>
             </DialogClose>
-            <DialogTitle className="text-4xl font-medium leading-[48px] tracking-[-0.8px]">
+            <DialogTitle className="text-3xl sm:text-4xl font-medium leading-[48px] tracking-[-0.8px]">
               {title}
             </DialogTitle>
             {description && (
@@ -57,7 +57,7 @@ const Modal = ({
           </DialogHeader>
         </div>
         <div className="flex-1 overflow-y-auto scrollbar-thin scrollbar-track-background-backdrop scrollbar-thumb-accent-primary/30 hover:scrollbar-thumb-accent-primary/70">
-          <div className="px-16 pb-16">{children}</div>
+          <div className="px-8 pb-8 md:px-16 md:pb-16 ">{children}</div>
         </div>
       </DialogContent>
     </Dialog>

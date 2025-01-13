@@ -62,7 +62,7 @@ const RegistrationForm = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="mt-10">
-      <div className="space-y-[24px]">
+      <div className="relative space-y-[24px] pb-8">
         <div className="relative">
           <input
             {...register('name')}
@@ -117,18 +117,17 @@ const RegistrationForm = () => {
             </p>
           )}
         </div>
+        {errors.root && (
+          <p className="absolute bottom-0 left-1/2 -translate-x-1/2 text-sm text-text-error whitespace-nowrap">
+            {errors.root.message}
+          </p>
+        )}
       </div>
-
-      {errors.root && (
-        <p className="mt-4 text-center text-sm text-text-error">
-          {errors.root.message}
-        </p>
-      )}
 
       <Button
         type="submit"
         size="large"
-        className="mt-10 w-full"
+        className="mt-4 w-full"
         disabled={isLoading}
       >
         {isLoading ? 'Creating account...' : 'Sign Up'}

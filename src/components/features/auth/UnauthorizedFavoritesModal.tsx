@@ -30,7 +30,7 @@ const UnauthorizedFavoritesModal = ({
           />
         </div>
       </div>
-      <div className="flex justify-center gap-4">
+      <div className="flex flex-col sm:flex-row justify-center gap-4">
         <Button
           variant="registration"
           onClick={() => {
@@ -42,7 +42,7 @@ const UnauthorizedFavoritesModal = ({
         </Button>
         <Button
           variant="primary"
-          className="px-10 py-3"
+          className="px-10 py-3 leading-5"
           onClick={() => {
             onClose();
             onLogin();

@@ -26,16 +26,16 @@ export default function NotFound() {
           Sorry, the page you&apos;re looking for doesn&apos;t exist
         </p>
 
-        <div className="flex justify-center space-x-4">
+        <div className="flex justify-center space-x-3 sm:space-x-4">
           <Button
             variant="primary"
             onClick={() => window.history.back()}
-            className="px-8"
+            className="px-4 py-2 sm:px-8"
           >
             Go Back
           </Button>
           <Link href="/">
-            <Button variant="secondary" className="px-8">
+            <Button variant="secondary" className="px-4 py-2 sm:px-8">
               Home Page
             </Button>
           </Link>
