@@ -5,14 +5,14 @@ const Hero = () => {
   return (
     <div className="flex flex-col lg:flex-row gap-6 mb-6">
       <div className="flex-1 rounded-[30px] bg-background-backdrop">
-        <h1 className="pt-8 sm:pt-12 lg:pt-24 px-6 sm:px-8 lg:px-16 max-w-[600px] text-text-primary text-3xl sm:text-4xl lg:text-5xl font-medium tracking-[-.02em] leading-[1.17]">
+        <h1 className="pt-8 sm:pt-12 lg:pt-24 px-6 sm:px-8 lg:px-16 text-text-primary text-3xl sm:text-4xl lg:text-5xl font-medium tracking-[-.02em] lg:leading-[1.17]">
           Unlock your potential with the best{' '}
           <span className="inline-block italic font-normal text-text-primary bg-accent-light px-2 py-1 rounded-lg leading-[0.7] align-baseline">
             language
           </span>{' '}
           tutors
         </h1>
-        <p className="mt-4 sm:mt-6 lg:mt-8 px-6 sm:px-8 lg:px-16 text-text-primary tracking-[-.02em] leading-[1.375] text-sm sm:text-base max-w-[500px]">
+        <p className="mt-4 sm:mt-6 lg:mt-8 px-6 sm:px-8 lg:px-16 text-text-primary tracking-[-.02em] leading-[1.375] text-sm sm:text-base max-w-[560px]">
           Embark on an Exciting Language Journey with Expert Language Tutors:
           Elevate your language proficiency to new heights by connecting with
           highly qualified and experienced tutors.

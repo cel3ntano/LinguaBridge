@@ -70,7 +70,7 @@ const Header = () => {
 
   return (
     <>
-      <header className="mx-auto max-w-[1440px] px-4 sm:px-6 md:px-8 lg:px-16 xl:px-[128px] my-5">
+      <header className="mx-auto max-w-[1440px] px-4 sm:px-6 md:px-12 lg:px-24 xl:px-[128px] my-5">
         <div className="mx-auto flex items-center justify-between">
           <div className="flex-shrink-0">
             <Link

@@ -1,6 +1,6 @@
 # LinguaBridge - Find Your Perfect Language Teacher
 
-![LinguaBridge Banner](https://repository-images.githubusercontent.com/912566758/a4ae6e18-5430-489d-8211-2a79b944a3af)
+![LinguaBridge Banner](https://repository-images.githubusercontent.com/912566758/f5da7bad-44ed-46bd-8adb-4b3260a2e718)
 
 LinguaBridge is a modern web application that connects language learners with experienced teachers worldwide. Built with Next.js and TypeScript, it provides a seamless platform for browsing teachers, viewing their profiles and reviews, and booking trial lessons.
 
@@ -45,13 +45,13 @@ LinguaBridge is a modern web application that connects language learners with ex
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/your-username/lingua-bridge.git
+git clone https://github.com/cel3ntano/LinguaBridge.git
 ```
 
 2. Navigate to the project directory:
 
 ```bash
-cd lingua-bridge
+cd LinguaBridge
 ```
 
 3. Install dependencies:
@@ -83,7 +83,7 @@ The application will be available at `http://localhost:3000`
 ## Project Structure
 
 ```
-lingua_bridge/
+LinguaBridge/
 ├─ src/
 │  ├─ app/                # Next.js pages and layouts
 │  ├─ components/         # React components

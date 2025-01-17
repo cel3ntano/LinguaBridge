@@ -10,10 +10,10 @@ const stats = [
 const Stats = () => {
   return (
     <div className="rounded-[30px] border-[1.5px] border-dashed border-accent-primary [border-dash-pattern:1_12]">
-      <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-6 lg:gap-[100px] py-6 sm:py-8 lg:py-10 px-4">
+      <ul className="flex flex-col sm:grid sm:grid-cols-2 sm:py-8 lg:flex lg:flex-row lg:px-20 justify-between py-6 lg:py-10 xl:px-44">
         {stats.map((stat, index) => (
           <li key={index} className="flex justify-center">
-            <ul className="flex gap-2 sm:gap-4">
+            <ul className="flex gap-2 sm:gap-4 items-center">
               <li className="text-text-primary text-xl sm:text-2xl lg:text-[28px] font-medium tracking-[-.02em] leading-[1.14]">
                 {stat.number}
               </li>

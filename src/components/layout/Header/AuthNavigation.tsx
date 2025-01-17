@@ -49,7 +49,7 @@ const AuthNavigation = ({ onLogin, onRegister }: AuthNavigationProps) => {
       <Button
         variant="registration"
         onClick={onRegister}
-        className="px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base"
+        className="px-10 py-3 text-sm sm:text-base"
       >
         <span className="hidden sm:inline">Registration</span>
         <span className="sm:hidden">Sign Up</span>
